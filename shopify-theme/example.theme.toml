@@ -1,0 +1,5 @@
+[environments.default]
+store = "your-store.myshopify.com"
+password = "shptka_123456789"
+path = "theme"
+store-password = "get_store_reference_password"

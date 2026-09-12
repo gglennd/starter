@@ -1,0 +1,25 @@
+{
+  "name": "shopify-theme-starter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "shopify theme dev",
+    "check": "shopify theme check",
+    "pull": "shopify theme pull",
+    "push": "shopify theme push",
+    "package": "shopify theme package"
+  },
+  "engines": {
+    "node": "24.x"
+  },
+  "keywords": [
+    "shopify",
+    "theme"
+  ],
+  "author": "gglennd",
+  "license": "MIT",
+  "packageManager": "pnpm@10.33.0",
+  "devDependencies": {
+    "@shopify/cli": "^3.93.2"
+  }
+}
