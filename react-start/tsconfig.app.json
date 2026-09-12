@@ -7,6 +7,9 @@
     "moduleDetection": "force",
     "module": "esnext",
     "moduleResolution": "bundler",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "types": ["vite/client"],
     "allowArbitraryExtensions": true,
     "allowImportingTsExtensions": true,
