@@ -5,6 +5,7 @@ This repository contains a collection of modern React starter templates and boil
 - **`react/`**: A standard React Single Page Application (SPA) starter template.
 - **`react-router/`**: A template configured with TanStack React Router.
 - **`react-start/`**: A full-stack React template configured with TanStack Start.
+- **`start-ssr-query/`**: A TanStack Start template with SSR and TanStack Query configured.
 
 ## Usage with tiged
 
@@ -22,7 +23,7 @@ pnpm dev
 Navigate to any of the template directories to explore, develop, and build applications:
 
 ```bash
-cd react       # or react-router, react-start
+cd react       # or react-router, react-start, start-ssr-query
 pnpm install
 pnpm dev
 ```
