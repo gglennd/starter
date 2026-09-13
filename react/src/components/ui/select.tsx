@@ -1,9 +1,10 @@
 "use client";
 
 import { RiArrowDownSLine, RiArrowUpSLine, RiCheckLine } from "@remixicon/react";
-import { cn } from "cn";
 import { Select as SelectPrimitive } from "radix-ui";
 import * as React from "react";
+
+import { cn } from "@/styles/utils";
 
 function Select({
   ...props

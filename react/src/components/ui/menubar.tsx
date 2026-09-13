@@ -1,9 +1,10 @@
 "use client";
 
 import { RiArrowRightSLine, RiCheckLine } from "@remixicon/react";
-import { cn } from "cn";
 import { Menubar as MenubarPrimitive } from "radix-ui";
 import * as React from "react";
+
+import { cn } from "@/styles/utils";
 
 function Menubar({
   className,

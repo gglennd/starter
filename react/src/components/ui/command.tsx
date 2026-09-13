@@ -1,6 +1,5 @@
 import { RiCheckLine, RiSearchLine } from "@remixicon/react";
 import { Command as CommandPrimitive } from "cmdk";
-import { cn } from "cn";
 import * as React from "react";
 
 import {
@@ -14,6 +13,7 @@ import {
   InputGroup,
   InputGroupAddon,
 } from "@/components/ui/input-group";
+import { cn } from "@/styles/utils";
 
 function Command({
   className,

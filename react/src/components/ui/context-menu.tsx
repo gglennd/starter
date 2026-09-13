@@ -1,7 +1,8 @@
 import { RiArrowRightSLine, RiCheckLine } from "@remixicon/react";
-import { cn } from "cn";
 import { ContextMenu as ContextMenuPrimitive } from "radix-ui";
 import * as React from "react";
+
+import { cn } from "@/styles/utils";
 
 function ContextMenu({
   ...props

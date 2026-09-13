@@ -2,7 +2,6 @@ import type { VariantProps } from "class-variance-authority";
 
 import { RiSideBarLine } from "@remixicon/react";
 import { cva } from "class-variance-authority";
-import { cn } from "cn";
 import { Slot } from "radix-ui";
 import * as React from "react";
 
@@ -23,6 +22,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/styles/utils";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

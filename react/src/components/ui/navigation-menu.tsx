@@ -1,8 +1,9 @@
 import { RiArrowDownSLine } from "@remixicon/react";
 import { cva } from "class-variance-authority";
-import { cn } from "cn";
 import { NavigationMenu as NavigationMenuPrimitive } from "radix-ui";
 import * as React from "react";
+
+import { cn } from "@/styles/utils";
 
 function NavigationMenu({
   className,

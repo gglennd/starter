@@ -1,7 +1,8 @@
 import { RiArrowRightSLine, RiMoreLine } from "@remixicon/react";
-import { cn } from "cn";
 import { Slot } from "radix-ui";
 import * as React from "react";
+
+import { cn } from "@/styles/utils";
 
 function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
   return (

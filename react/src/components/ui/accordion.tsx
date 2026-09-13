@@ -1,7 +1,8 @@
 import { RiArrowDownSLine, RiArrowUpSLine } from "@remixicon/react";
-import { cn } from "cn";
 import { Accordion as AccordionPrimitive } from "radix-ui";
 import * as React from "react";
+
+import { cn } from "@/styles/utils";
 
 function Accordion({
   className,

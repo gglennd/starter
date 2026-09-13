@@ -1,11 +1,11 @@
 "use client";
 
 import { RiCloseLine } from "@remixicon/react";
-import { cn } from "cn";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
+import { cn } from "@/styles/utils";
 
 function Dialog({
   ...props
