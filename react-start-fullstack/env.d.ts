@@ -1,8 +1,8 @@
+import type { ServerEnv } from "@/lib/env";
+
 declare global {
   namespace NodeJS {
-    interface ProcessEnv {
-      readonly NODE_ENV: "development" | "production" | "test";
-    }
+    interface ProcessEnv extends ServerEnv {}
   }
 }
 

@@ -1,14 +1,13 @@
-import { HttpTransport } from "@loglayer/transport-http";
-import { ConsoleTransport, LogLayer } from "loglayer";
+import { PinoTransport } from "@loglayer/transport-pino";
+import { LogLayer } from "loglayer";
+import { pino } from "pino";
 import { serializeError } from "serialize-error";
 
-type LogLevel = "trace" | "debug" | "info" | "warn" | "error" | "fatal";
+import type { ServerEnv } from "@/lib/env";
 
-function env(name: string, fallback?: string): string | undefined {
-  // eslint-disable-next-line node/prefer-global/process
-  const value = typeof process !== "undefined" ? process.env[name] : undefined;
-  return value ?? fallback;
-}
+import { serverEnv } from "@/lib/env";
+
+type LogLevel = ServerEnv["LOG_LEVEL"];
 
 function parseLogLevel(value: string | undefined): LogLevel {
   switch (value?.toLowerCase()) {
@@ -24,44 +23,28 @@ function parseLogLevel(value: string | undefined): LogLevel {
   }
 }
 
-const level = parseLogLevel(env("LOG_LEVEL"));
-const httpUrl = env("LOG_HTTP_URL");
-const apiKey = env("LOG_API_KEY");
+const level = parseLogLevel(serverEnv.LOG_LEVEL);
 
-const consoleTransport = new ConsoleTransport({
-  logger: console,
-  level,
-  messageField: "message",
-  dateField: "timestamp",
-  levelField: "level",
-});
-
-const httpTransport = httpUrl
-  ? new HttpTransport({
-      url: httpUrl,
-      method: "POST",
-      headers: () => ({
-        "Content-Type": "application/json",
-        ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {}),
-      }),
-      payloadTemplate: ({ logLevel, message, data, error }) =>
-        JSON.stringify({
-          timestamp: new Date().toISOString(),
-          level: logLevel,
-          message,
-          ...data,
-          ...(error ? { error } : {}),
+const pinoTransport = new PinoTransport({
+  logger: pino({
+    level,
+    ...(serverEnv.NODE_ENV === "production"
+      ? {}
+      : {
+          transport: {
+            target: "pino-pretty",
+            options: {
+              colorize: true,
+              translateTime: "SYS:standard",
+            },
+          },
         }),
-      enableBatchSend: false,
-      compression: false,
-      maxRetries: 2,
-      retryDelay: 500,
-      onError: err => console.error("[logger:http]", err.message),
-    })
-  : null;
+  }),
+  level,
+});
 
 export const logger = new LogLayer({
   errorSerializer: serializeError,
   errorFieldName: "error",
-  transport: [consoleTransport, ...(httpTransport ? [httpTransport] : [])],
+  transport: [pinoTransport],
 });
